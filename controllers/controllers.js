@@ -7,9 +7,9 @@ export const ready = (request, response) => {
     request.headers['x-real-ip'] || 
     request.headers['x-forwarder-for'] ||
     request.socket.remoteAddress || ''
-    console.log(ip)
     response.status(200)
     response.json('server ready!')
+    console.log(ip)
 }
 
 export const main = (request, response) => {
@@ -22,10 +22,13 @@ export const login = (request, response) => {
     const {username, password} = request.body
 
     db.query(data, [username, password], (error,result) => {
-        if (error) console.log('error')
+        if (error) throw error
         if (Object.keys(result).length > 0) {
-            const token = (jwt.sign({username}, process.env.accesstoken))
+            const parse = JSON.parse(JSON.stringify(result))
+            const ID = parse[0].ID
+            const token = (jwt.sign({username, data}, process.env.accesstoken))
             response.status(200).json({token : token})
+            
         } else {
             const pesan = `hi ${username}, akun kamu tidak ditemukan!`
             response.status(404)
