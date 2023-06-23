@@ -5,7 +5,6 @@ import http from 'http'
 import cors from 'cors'
 
 const app = express();
-const port = 9090
 const server = http.createServer(app)
 
 dotenv.config()
@@ -14,5 +13,4 @@ app.use(express.urlencoded({extended : true}))
 app.use(cors({credentials : true, origin : 'http://localhost:5173'}))
 app.use(router)
 
-
-server.listen(port, () => console.log('server running in port', port))
+server.listen(process.env.app_port, () => console.log('server up and running...'))

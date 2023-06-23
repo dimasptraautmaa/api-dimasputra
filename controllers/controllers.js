@@ -1,4 +1,4 @@
-import db from '../models/models.js'
+import db from '../models/database.js'
 import jwt from 'jsonwebtoken'
  
 export const ready = (request, response) => {
