@@ -17,6 +17,21 @@ export const main = (request, response) => {
     response.json({valid : 'akun kamu tervalidasi'})
 }
 
+export const admin = (request, response) => {
+    const {username, password} = request.body
+    const useradmin = process.env.useradmin
+    const pwadmin = process.env.pwadmin
+
+    if (username == useradmin && password == pwadmin) {
+        const token = jwt.sign({username, password}, process.env.accesstoken)
+        response.status(200)
+        response.json({token : token})
+    } else {
+        response.status(404)
+        response.json({pesan : 'akun tidak ditemukan'})
+    }
+}
+
 export const login = (request, response) => {
     const data = (`select * from data_login where username = ? and password = ?`)
     const {username, password} = request.body
