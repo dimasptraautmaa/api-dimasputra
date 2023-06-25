@@ -7,7 +7,7 @@ import { router } from './routes/router.js';
 
 const app = express();
 const server = http.createServer(app)
-const socket = new Server(server, {cors : 'http://localhost:5173/'})
+const socket = new Server(server)
 
 dotenv.config()
 app.use(express.json())
