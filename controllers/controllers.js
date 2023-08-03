@@ -4,9 +4,13 @@ import jwt from 'jsonwebtoken'
 export const ready = (request, response) => {
     response.status(200)
     response.json({pesan : 'halo selamat datang'})
-    const ip = request.body
-    console.log(ip)
 }
+
+export const user = (request, response) => {
+    response.status(200)
+    const data = request.body
+    console.log(data.ip)
+} 
 
 export const main = (request, response) => {
     response.status(200)
