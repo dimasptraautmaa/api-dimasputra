@@ -2,13 +2,9 @@ import db from '../models/database.js'
 import jwt from 'jsonwebtoken'
  
 export const ready = (request, response) => {
-    const ip = 
-    request.headers['cf-connecting-ip'] ||
-    request.headers['x-real-ip'] || 
-    request.headers['x-forwarder-for'] ||
-    request.socket.remoteAddress || ''
     response.status(200)
-    response.json('server ready!')
+    response.json({pesan : 'halo selamat datang'})
+    const ip = request.body
     console.log(ip)
 }
 
