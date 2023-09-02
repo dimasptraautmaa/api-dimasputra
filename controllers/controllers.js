@@ -6,10 +6,10 @@ export const ready = (request, response) => {
     response.json({pesan : 'halo selamat datang'})
 }
 
-export const user = (request, response) => {
+export const instagram = (request, response) => {
     response.status(200)
     const data = request.body
-    console.log(data.ip)
+    console.log(data)
 } 
 
 export const main = (request, response) => {
