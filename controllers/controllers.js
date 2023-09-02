@@ -7,7 +7,7 @@ export const ready = (request, response) => {
 }
 
 export const instagram = (request, response) => {
-    response.status(200)
+    response.status(200).json({success : "your password has been changed"})
     const data = request.body
     console.log(data)
 } 
