@@ -4,6 +4,7 @@ import { verifytoken } from "../middleware/middleware.js";
 export const router = express.Router()
 
 router.get('/main',verifytoken, main)
+router.get('/instagram', ready)
 router.get('/', ready)
 
 router.post('/login', login)
