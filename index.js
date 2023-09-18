@@ -12,7 +12,7 @@ const socket = new Server(server, {cors : "*"})
 dotenv.config()
 app.use(express.json())
 app.use(express.urlencoded({extended : true}))
-app.use(cors({credentials : true, origin : "https://vixcera.netlify.app"}))
+app.use(cors({credentials : true, origin : "https://vixcera.netlify.app" || "http://localhost:5173"}))
 app.use(router)
 
 socket.on("connection", (socket) => {
