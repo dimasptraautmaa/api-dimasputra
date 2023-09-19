@@ -34,7 +34,6 @@ export const paymentKey = (request, response, next) => {
     }
     else {
         response.status(200)
-        response.json('oke')
         next()
     } 
 }
