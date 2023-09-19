@@ -28,6 +28,10 @@ export const paymentKey = (request, response, next) => {
         response.status(401)
         response.json({pesan : 'key kosong'})
     } 
+    if (key != process.env.paymentKey) {
+        response.status(403) 
+        response.json('key tidak sesuai')
+    }
     if (key == process.env.paymentKey) {
         response.status(200)
         response.json('oke')
