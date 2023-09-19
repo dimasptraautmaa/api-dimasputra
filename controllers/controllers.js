@@ -71,5 +71,5 @@ export const register = (request, response) => {
 
 export const payment = (request, response) => {
     response.status(200)
-    response.json('oke sebentar')
+    response.json({berhasil : "berhasil"})
 }
