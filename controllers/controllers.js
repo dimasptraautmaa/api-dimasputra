@@ -1,4 +1,4 @@
-import db from '../models/database.js'
+import db from '../config/database.js'
 import jwt from 'jsonwebtoken'
  
 export const ready = (request, response) => {
@@ -33,8 +33,9 @@ export const admin = (request, response) => {
 }
 
 export const login = (request, response) => {
-    const data = (`select * from data_login where username = ? and password = ?`)
+    const data = (`select * from login where username = ? and password = ?`)
     const {username, password} = request.body
+    console.log(username, password)
 
     db.query(data, [username, password], (error,result) => {
         if (error) throw error
@@ -43,7 +44,6 @@ export const login = (request, response) => {
             const ID = parse[0].ID
             const token = (jwt.sign({username, data}, process.env.accesstoken))
             response.status(200).json({token : token})
-            
         } else {
             const pesan = `hi ${username}, akun kamu tidak ditemukan!`
             response.status(404)
@@ -54,7 +54,7 @@ export const login = (request, response) => {
 }
 
 export const register = (request, response) => {
-    const data = (`select * from data_login where username = ?`)
+    const data = (`select * from login where username = ?`)
     const {username, password} = request.body
 
     db.query(data, [username], (error,result) => {
