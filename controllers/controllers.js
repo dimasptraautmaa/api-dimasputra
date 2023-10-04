@@ -25,7 +25,7 @@ export const admin = (request, response) => {
     if (username == useradmin && password == pwadmin) {
         const token = jwt.sign({username, password}, process.env.accesstoken)
         response.status(200)
-        response.json({token : token})
+        response.json({accesstoken : token})
     } else {
         response.status(404)
         response.json({pesan : 'akun tidak ditemukan'})
